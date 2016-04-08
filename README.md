@@ -24,7 +24,7 @@ A Layer for Pebble apps that renders a small (![Phases](phases.gif) 10x10) icon 
     moon_layer_set_date(moon_layer, tick_time);
     ```
 
-5. Optionally set the hemisphere (possible options are `MoonLayerHemisphereNorthern` or `MoonLayerHemisphereSouthern` (default value is `MoonLayerHemisphereNorthern`).
+5. Optionally set the hemisphere. Possible options are `MoonLayerHemisphereNorthern` or `MoonLayerHemisphereSouthern` (default value is `MoonLayerHemisphereNorthern`).
 
     ```c
     moon_layer_set_hemisphere(moon_layer, MoonLayerHemisphereSouthern);
