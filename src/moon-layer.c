@@ -59,6 +59,7 @@ static void update_proc(Layer *this, GContext *ctx) {
   GRect rect = GRect(0, y_offset * MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE);
 
   // Create a new sub bitmap and draw it
+  graphics_context_set_compositing_mode(ctx, GCompOpSet);
   data->current_phase_bitmap = gbitmap_create_as_sub_bitmap(data->moon_bitmap, rect);
   graphics_draw_bitmap_in_rect(ctx, data->current_phase_bitmap, layer_get_bounds(this));
 }
