@@ -11,7 +11,7 @@ static int default_hemisphere = MoonLayerHemisphereNorthern;
 
 static MoonLayer *moon_layer;
 
-static void refresh_phase_bitmap() {
+static void refresh_moon_date() {
   // Get a tm structure
   time_t temp = time(NULL);
   temp += diff_days * 24 * 60 * 60;
@@ -31,12 +31,12 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
   diff_days += 1;
-  refresh_phase_bitmap();
+  refresh_moon_date();
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
   diff_days -= 1;
-  refresh_phase_bitmap();
+  refresh_moon_date();
 }
 
 static void click_config_provider(void *context) {
@@ -66,7 +66,7 @@ static void window_load(Window *window) {
   moon_layer = moon_layer_create(grect_center_point(&bounds));
   layer_add_child(window_layer, moon_layer_get_layer(moon_layer));
 
-  refresh_phase_bitmap();
+  refresh_moon_date();
 }
 
 static void window_unload(Window *window) {
