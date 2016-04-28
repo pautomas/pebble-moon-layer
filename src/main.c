@@ -65,6 +65,7 @@ static void window_load(Window *window) {
 
   moon_layer = moon_layer_create(grect_center_point(&bounds));
   layer_add_child(window_layer, moon_layer_get_layer(moon_layer));
+  moon_layer_set_border_color(moon_layer, GColorWhite);
 
   refresh_moon_date();
 }

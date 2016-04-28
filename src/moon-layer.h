@@ -16,3 +16,4 @@ void moon_layer_destroy(MoonLayer *layer);
 Layer* moon_layer_get_layer(MoonLayer *layer);
 void moon_layer_set_date(MoonLayer *layer, tm *tick_time);
 void moon_layer_set_hemisphere(MoonLayer *layer, MoonLayerHemisphere hemisphere);
+void moon_layer_set_border_color(MoonLayer *layer, GColor color);

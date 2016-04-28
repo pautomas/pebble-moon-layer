@@ -10,6 +10,7 @@ typedef struct {
   MoonLayerHemisphere hemisphere;
   GBitmap *moon_bitmap;
   GBitmap *current_phase_bitmap;
+  GColor border_color;
 } MoonLayerData;
 
 double modulo(double a, double n) {
@@ -40,6 +41,7 @@ double get_moon_age(int year, int month, int day) {
 
 static void update_proc(Layer *this, GContext *ctx) {
   MoonLayerData* data = layer_get_data(this);
+  GRect bounds = layer_get_bounds(this);
   // Destroy any preexistent sub bitmap
   gbitmap_destroy(data->current_phase_bitmap);
 
@@ -56,12 +58,16 @@ static void update_proc(Layer *this, GContext *ctx) {
       return;
   }
 
-  GRect rect = GRect(0, y_offset * MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE);
+  if (!gcolor_equal(data->border_color, GColorClear)) {
+    graphics_context_set_fill_color(ctx, data->border_color);
+    graphics_fill_rect(ctx, bounds, MOON_RESOURCE_SIZE/2, GCornersAll);
+  }
 
   // Create a new sub bitmap and draw it
+  GRect rect = GRect(0, y_offset * MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE);
   graphics_context_set_compositing_mode(ctx, GCompOpSet);
   data->current_phase_bitmap = gbitmap_create_as_sub_bitmap(data->moon_bitmap, rect);
-  graphics_draw_bitmap_in_rect(ctx, data->current_phase_bitmap, layer_get_bounds(this));
+  graphics_draw_bitmap_in_rect(ctx, data->current_phase_bitmap, grect_inset(bounds, GEdgeInsets(1)));
 }
 
 void moon_layer_set_date(MoonLayer *this, tm *tick_time) {
@@ -84,6 +90,12 @@ void moon_layer_set_hemisphere(MoonLayer *this, MoonLayerHemisphere hemisphere) 
   layer_mark_dirty(this->layer);
 }
 
+void moon_layer_set_border_color(MoonLayer *this, GColor color) {
+  MoonLayerData* data = layer_get_data(this->layer);
+  data->border_color = color;
+  layer_mark_dirty(this->layer);
+}
+
 Layer* moon_layer_get_layer(MoonLayer *this) {
   return this->layer;
 }
@@ -95,12 +107,14 @@ void moon_layer_destroy(MoonLayer *this) {
 
 MoonLayer* moon_layer_create(GPoint position) {
   MoonLayer* this = (MoonLayer*)malloc(sizeof(MoonLayer));
-  this->layer = layer_create_with_data(GRect(position.x - MOON_RESOURCE_SIZE/2, position.y - MOON_RESOURCE_SIZE/2, MOON_RESOURCE_SIZE, MOON_RESOURCE_SIZE), sizeof(MoonLayerData));
+  int layer_size = MOON_RESOURCE_SIZE + 2;
+  this->layer = layer_create_with_data(GRect(position.x - layer_size/2, position.y - layer_size/2, layer_size, layer_size), sizeof(MoonLayerData));
   layer_set_update_proc(this->layer, update_proc);
 
   MoonLayerData *data = (MoonLayerData *)layer_get_data(this->layer);
   data->age = 0;
   data->hemisphere = MoonLayerHemisphereNorthern;
+  data->border_color = PBL_IF_BW_ELSE(GColorWhite, GColorClear);
   data->moon_bitmap = gbitmap_create_with_resource(RESOURCE_ID_MOON);
 
   return this;

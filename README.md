@@ -34,10 +34,18 @@ A Layer for Pebble apps that renders a small (![Phases](phases.gif) 10x10) icon 
     moon_layer_set_date(moon_layer, tick_time);
     ```
 
-7. Optionally set the hemisphere. Possible options are `MoonLayerHemisphereNorthern` or `MoonLayerHemisphereSouthern` (default value is `MoonLayerHemisphereNorthern`).
+## Other configurations
 
-    ```c
-    moon_layer_set_hemisphere(moon_layer, MoonLayerHemisphereSouthern);
-    ```
+People in different hemispheres see the moon in a slightly different way, so it's possible to configure the hemisphere where the moon is being viewed from. Possible options are `MoonLayerHemisphereNorthern` and `MoonLayerHemisphereSouthern` (default value is `MoonLayerHemisphereNorthern`).
+
+  ```c
+  moon_layer_set_hemisphere(moon_layer, MoonLayerHemisphereSouthern);
+  ```
+
+It's also possible to display a 1px border around the icon to improve visibility. Any `GColor` value is accepted. Use `GColorClear` for no border (default values are `GColorWhite` on BW devices and `GColorClear` on Color devices).
+
+  ```c
+  moon_layer_set_border_color(moon_layer, GColorBlack);
+  ```
 
 ![Phases](phases.gif)
