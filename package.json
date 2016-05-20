@@ -1,0 +1,25 @@
+{
+  "name": "pebble-moon-layer",
+  "author": "Pau Tomàs",
+  "version": "1.0.0",
+  "files": ["dist.zip"],
+  "keywords": ["pebble-package"],
+  "dependencies": {},
+  "pebble": {
+    "sdkVersion": "3",
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk"
+    ],
+    "resources": {
+      "media": [
+        {
+          "type": "bitmap",
+          "name": "MOON",
+          "file": "phases.png"
+        }
+      ]
+    }
+  }
+}
