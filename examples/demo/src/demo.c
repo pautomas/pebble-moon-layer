@@ -1,5 +1,5 @@
 #include <pebble.h>
-#include "pebble-moon-layer/moon-layer.h"
+#include <pebble-moon-layer/moon-layer.h>
 
 static Window *window;
 static TextLayer *date_layer;
