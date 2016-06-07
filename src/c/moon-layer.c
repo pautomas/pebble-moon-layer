@@ -13,7 +13,7 @@ typedef struct {
   GColor border_color;
 } MoonLayerData;
 
-double modulo(double a, double n) {
+static double modulo(double a, double n) {
   return a - n * ((int) (a / n));
 }
 
@@ -28,7 +28,7 @@ double modulo(double a, double n) {
  * @param  day   day to calculate
  * @return       the age of the moon as an in between 0 and 29
  */
-double get_moon_age(int year, int month, int day) {
+static double get_moon_age(int year, int month, int day) {
   double r = year % 100;
   r = modulo(r, 19);
   if (r > 9) { r -= 19; }
