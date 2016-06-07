@@ -4,21 +4,11 @@ A Layer for Pebble apps that renders a small (![Phases](phases.gif) 10x10) icon 
 
 ## Usage
 
-1. Add `src/moon-layer.h` and `src/moon-layer.c` to your `src` folder.
-2. Copy `resources/phases.png` to your `resources` folder.
-3. Include the file in your `appinfo.json` resources list.
-
-    ```json
-    {
-        "type": "bitmap",
-        "name": "MOON",
-        "file": "phases.png"
-    }
-    ```
-4. Include `moon-layer.h` in your code.
+1. Install the library by running `pebble package install pebble-moon-layer --save`.
+2. Include `moon-layer.h` in your code.
 
     ```c
-    #include "moon-layer.h"
+    #include <pebble-moon-layer/moon-layer.h>
     ```
 5. Create a new ``MoonLayer``. The `GPoint` parameter represents the position of the center-point of the image.
 

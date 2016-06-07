@@ -1,0 +1,26 @@
+{
+  "name": "moon-layer-demo",
+  "author": "Pau Tomàs",
+  "version": "1.1.0",
+  "keywords": [
+    "pebble-app"
+  ],
+  "private": true,
+  "dependencies": {
+    "pebble-moon-layer": "1.0.0"
+  },
+  "pebble": {
+    "displayName": "Moon Layer Demo",
+    "uuid": "4af5adaa-4a8a-4d3f-b2e0-b468eff8b621",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk"
+    ],
+    "watchapp": {
+      "watchface": false
+    }
+  }
+}
