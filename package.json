@@ -1,11 +1,13 @@
 {
   "name": "pebble-moon-layer",
   "author": "Pau Tomàs",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "repository": "pautomas/pebble-moon-layer",
   "files": ["dist.zip"],
   "keywords": ["pebble-package"],
   "dependencies": {},
   "pebble": {
+    "projectType": "package",
     "sdkVersion": "3",
     "targetPlatforms": [
       "aplite",
