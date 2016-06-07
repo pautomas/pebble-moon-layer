@@ -1,6 +1,6 @@
 # Pebble Moon Layer
 
-A Layer for Pebble apps that renders a small (![Phases](phases.gif) 10x10) icon representing the moon phase for a given date and hemisphere.
+A Layer for Pebble apps that renders a small (![Phases](extras/phases.gif) 10x10) icon representing the moon phase for a given date and hemisphere.
 
 ## Usage
 
@@ -38,4 +38,4 @@ It's also possible to display a 1px border around the icon to improve visibility
   moon_layer_set_border_color(moon_layer, GColorBlack);
   ```
 
-![Phases](phases.gif)
+![Phases](extras/phases.gif)
