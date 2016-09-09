@@ -101,6 +101,9 @@ Layer* moon_layer_get_layer(MoonLayer *this) {
 }
 
 void moon_layer_destroy(MoonLayer *this) {
+  MoonLayerData* data = layer_get_data(this->layer);
+  gbitmap_destroy(data->moon_bitmap);
+  gbitmap_destroy(data->current_phase_bitmap);
   layer_destroy(this->layer);
   free(this);
 }
