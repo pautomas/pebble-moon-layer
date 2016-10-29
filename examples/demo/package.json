@@ -7,7 +7,7 @@
   ],
   "private": true,
   "dependencies": {
-    "pebble-moon-layer": "^1.2.0"
+    "pebble-moon-layer": "^1.2.1"
   },
   "pebble": {
     "displayName": "Moon Layer Demo",
